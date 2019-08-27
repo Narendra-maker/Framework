@@ -31,13 +31,14 @@ public class BaseClass {
 	@BeforeSuite
 	public void setUpSuite()
 	{
-          
+           
 		
 		 excel = new ExcelDataProvider();
 		 config = new ConfigDataProvider();
 		 ExtentHtmlReporter extent=new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/Reports/FreeCRM_"+Helper.getCurrentDateTime()+".html"));
 		 report=new ExtentReports();
 		 report.attachReporter(extent); 
+		 
 	}
 	
 	@BeforeClass
