@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
