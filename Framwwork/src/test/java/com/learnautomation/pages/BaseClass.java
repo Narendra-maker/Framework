@@ -26,53 +26,46 @@ public class BaseClass {
 	public ConfigDataProvider config;
 	public ExtentReports report;
 	public ExtentTest logger;
-	
+
 	@BeforeSuite
-	public void setUpSuite()
-	{
-           
-		
-		 excel = new ExcelDataProvider();
-		 config = new ConfigDataProvider();
-		 ExtentHtmlReporter extent=new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/Reports/FreeCRM_"+Helper.getCurrentDateTime()+".html"));
-		 report=new ExtentReports();
-		 report.attachReporter(extent); 
-		 
-	}
-	
-	@BeforeClass
-	public void setup()
-	{
-		driver = BrowserFactory.StartApplication(driver, config.getBrowser(), config.getStagingURL());
+	public void setUpSuite() {
+
+		excel = new ExcelDataProvider();
+		config = new ConfigDataProvider();
+		ExtentHtmlReporter extent = new ExtentHtmlReporter(
+				new File(System.getProperty("user.dir") + "/Reports/FreeCRM_" + Helper.getCurrentDateTime() + ".html"));
+		report = new ExtentReports();
+		report.attachReporter(extent);
 
 	}
-	
+
+	@BeforeClass
+	public void setup() {
+		driver = BrowserFactory.StartApplication(driver, config.getBrowser(), config.getStagingURL());
+	}
+
 	@AfterClass
-	public void tearDown()
-	{
+	public void tearDown() {
 		BrowserFactory.quitBrowser(driver);
 
 	}
+
 	@AfterMethod
-	public void tearDownMethod(ITestResult result) throws IOException
-	{
-	
-		if(result.getStatus()==ITestResult.FAILURE)
-		{
-		    Helper.captureScreenshot(driver);
-		    
-		   logger.fail("Test failed",MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());   
-	    }
-		else if(result.getStatus()==ITestResult.SUCCESS)
-		{
-		
-			logger.pass("Test passed",MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
+	public void tearDownMethod(ITestResult result) throws IOException {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			Helper.captureScreenshot(driver);
+
+			logger.fail("Test failed",
+					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+
+			logger.pass("Test passed",
+					MediaEntityBuilder.createScreenCaptureFromPath(Helper.captureScreenshot(driver)).build());
 		}
-		
+
 		report.flush();
-		
-		
-	 }
-	
-	
+
+	}
+
 }

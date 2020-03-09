@@ -3,9 +3,9 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <!-- <class name="com.learnautomation.pages.BaseClass"/>
-      <class name="com.learnautomation.testcases.LoginTestCRM"/> -->
-      <class name="com.learnautomation.testcases.TestCaseWithoutFramework"/>
+      
+      <class name="com.learnautomation.testcases.LoginTestCRM"/> 
+     
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
